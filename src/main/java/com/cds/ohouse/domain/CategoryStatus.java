@@ -1,0 +1,5 @@
+package com.cds.ohouse.domain;
+
+public enum CategoryStatus {
+    INDOOR, ENTRANCE, LIVING_ROOM, BED_ROOM, BATH_ROOM, SECURITY, BUILDING, APT_FACILITY, TRAFFIC, CONVENIENCE, AROUND, EDUCATION
+}
