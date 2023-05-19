@@ -1,5 +1,5 @@
 package com.cds.ohouse.domain;
 
 public enum CategoryStatus {
-    INDOOR, KITCHEN, LIVINGROOM, BATHROOM
+    INDOOR, KITCHEN, LIVING_ROOM, BATH_ROOM
 }
