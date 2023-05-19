@@ -4,8 +4,10 @@ import javax.validation.constraints.NotBlank;
 
 import com.cds.ohouse.domain.TradeState;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
+@NoArgsConstructor
 public class CheckListUpdateRequestDTO {
     @NotBlank
     private Long id;
@@ -29,34 +31,4 @@ public class CheckListUpdateRequestDTO {
     private String price;
     @NotBlank
     private int size;
-
-    public CheckListUpdateRequestDTO(Long id, String title, String address, int dong, int ho, String description, String image, int grade, TradeState state, String price, int size) {
-        this.id = id;
-        this.title = title;
-        this.address = address;
-        this.dong = dong;
-        this.ho = ho;
-        this.description = description;
-        this.image = image;
-        this.grade = grade;
-        this.state = state;
-        this.price = price;
-        this.size = size;
-    }
-
-    public static CheckListUpdateRequestDTO of(Long id, String title, String address, int dong, int ho, String description, String image, int grade, TradeState state, String price, int size) {
-        return new CheckListUpdateRequestDTO(
-                id,
-                title,
-                address,
-                dong,
-                ho,
-                description,
-                image,
-                grade,
-                state,
-                price,
-                size
-        );
-    }
 }
