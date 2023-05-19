@@ -10,6 +10,11 @@ import org.springframework.http.HttpStatus;
 public enum SuccessStatus {
 
     /**
+     * 200 OK
+     */
+    UPDATE_CATEGORY_SUCCESS(HttpStatus.OK, "카테고리 수정이 완료됐습니다."),
+
+    /**
      * 201 CREATED
      */
     CREATE_CATEGORY_SUCCESS(HttpStatus.CREATED, "카테고리 생성이 완료됐습니다."),

@@ -14,4 +14,9 @@ public class GlobalExceptionHandler {
     protected ApiResponse handleMethodArgumentNotValidException(final MethodArgumentNotValidException e) {
         return ApiResponse.error(ErrorStatus.VALIDATION_REQUEST_MISSING_EXCEPTION);
     }
+
+    @ExceptionHandler(CheckListException.class)
+    protected ApiResponse checkListException(final CheckListException e) {
+        return ApiResponse.error(e.getErrorStatus());
+    }
 }

@@ -1,5 +1,6 @@
 package com.cds.ohouse.domain;
 
+import com.cds.ohouse.dto.request.CheckListUpdateRequestDTO;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -43,7 +44,7 @@ public class CheckList {
     @Column(name = "ho")
     private int ho;
 
-    @OneToOne(mappedBy = "checkList")
+    @OneToOne(mappedBy = "checkList", cascade = CascadeType.PERSIST)
     private Tag tag;
 
     @OneToMany(mappedBy = "checkList")
@@ -59,5 +60,15 @@ public class CheckList {
         this.dong = dong;
         this.ho = ho;
         this.tag = tag;
+    }
+
+    public void updateCategory(CheckListUpdateRequestDTO checkListUpdateRequestDTO) {
+        this.title = checkListUpdateRequestDTO.getTitle();
+        this.image = checkListUpdateRequestDTO.getImage();
+        this.description = checkListUpdateRequestDTO.getDescription();
+        this.grade = checkListUpdateRequestDTO.getGrade();
+        this.address = checkListUpdateRequestDTO.getAddress();
+        this.dong = checkListUpdateRequestDTO.getDong();
+        this.ho = checkListUpdateRequestDTO.getHo();
     }
 }
