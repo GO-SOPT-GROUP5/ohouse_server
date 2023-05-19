@@ -30,7 +30,7 @@ public class CategoryServiceImpl implements CategoryService {
     private Category getCategoryById(Long id) {
         return categoryRepository
                 .findCategoryById(id)
-                .orElseThrow(() -> new CheckListException(ErrorStatus.INVALID_CHECKLIST_EXCEPTION));
+                .orElseThrow(() -> new CheckListException(ErrorStatus.INVALID_CATEGORY_EXCEPTION));
     }
 
 }
