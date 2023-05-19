@@ -25,9 +25,21 @@ public class Tag {
     private String price;
 
     @Column(name = "size")
-    private String size;
+    private int size;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "check_list_id")
     private CheckList checkList;
+
+    public Tag(TradeState state, String price, int size) {
+        this.state = state;
+        this.price = price;
+        this.size = size;
+    }
+
+    public void updateTag(Tag tag) {
+        this.state = tag.getState();
+        this.price = tag.getPrice();
+        this.size = tag.getSize();
+    }
 }

@@ -14,6 +14,7 @@ public enum ErrorStatus {
      */
     REQUEST_VALIDATION_EXCEPTION(HttpStatus.BAD_REQUEST, "잘못된 요청입니다"),
     VALIDATION_REQUEST_MISSING_EXCEPTION(HttpStatus.BAD_REQUEST, "요청값이 입력되지 않았습니다."),
+    INVALID_CHECKLIST_EXCEPTION(HttpStatus.BAD_REQUEST, "체크리스트가 존재하지 않습니다."),
 
     /**
      * 404 NOT FOUND
