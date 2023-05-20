@@ -32,4 +32,10 @@ public class CheckListServiceImpl implements CheckListService {
 
         return CheckListUpdateResponseDTO.of(checkListUpdateRequestDTO, CheckListUpdateResponseVO.of(tag));
     }
+    @Override
+    @Transactional(readOnly = true)
+    public CheckList getCheckListById(Long id) {
+        return checkListRepository.findById(id)
+            .orElseThrow(() -> new CheckListException(ErrorStatus.NOT_FOUND_CHECKLIST));
+    }
 }
