@@ -32,6 +32,8 @@ public class CheckListServiceImpl implements CheckListService {
 
         return CheckListUpdateResponseDTO.of(checkListUpdateRequestDTO, CheckListUpdateResponseVO.of(tag));
     }
+    @Override
+    @Transactional
     public void deleteCheckList(Long id){
         CheckList checkList = checkListRepository.findById(id)
             .orElseThrow(() -> new CheckListException(ErrorStatus.INVALID_CHECKLIST_EXCEPTION));
