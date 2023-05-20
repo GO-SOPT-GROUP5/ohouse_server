@@ -7,10 +7,7 @@ import com.cds.ohouse.dto.response.CheckListUpdateResponseDTO;
 import com.cds.ohouse.service.CheckListService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
@@ -22,5 +19,10 @@ public class CheckListController {
     public ResponseEntity<ApiResponse> updateCheckList(@RequestBody CheckListUpdateRequestDTO request) {
         CheckListUpdateResponseDTO response = checkListService.updateCheckList(request);
         return ResponseEntity.ok(ApiResponse.success(SuccessStatus.UPDATE_CATEGORY_SUCCESS, response));
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<ApiResponse> deleteCheckList(@PathVariable Long id) {
+        checkListService.deleteCheckList(id);
+        return ResponseEntity.ok(ApiResponse.success(SuccessStatus.DELETE_CHECKLIST_SUCCESS));
     }
 }

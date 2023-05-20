@@ -5,4 +5,5 @@ import com.cds.ohouse.dto.response.CheckListUpdateResponseDTO;
 
 public interface CheckListService {
     CheckListUpdateResponseDTO updateCheckList(CheckListUpdateRequestDTO checkListUpdateRequestDTO);
+    void deleteCheckList(Long id);
 }
