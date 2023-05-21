@@ -1,4 +1,4 @@
-package com.cds.ohouse.repository;
+package com.cds.ohouse.repository.checkList;
 
 import com.cds.ohouse.domain.CheckList;
 import org.springframework.data.jpa.repository.JpaRepository;
