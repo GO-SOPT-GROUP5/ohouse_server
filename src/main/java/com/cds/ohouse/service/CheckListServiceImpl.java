@@ -35,7 +35,7 @@ public class CheckListServiceImpl implements CheckListService {
     @Override
     @Transactional
     public void deleteCheckList(Long id){
-        CheckList checkList = checkListRepository.findById(id)
+        val checkList = checkListRepository.findById(id)
             .orElseThrow(() -> new CheckListException(ErrorStatus.INVALID_CHECKLIST_EXCEPTION));
         checkListRepository.delete(checkList);
     }
