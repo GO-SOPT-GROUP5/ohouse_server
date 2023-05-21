@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface CheckListRepository extends JpaRepository<CheckList, Long> {
+public interface CheckListRepository extends JpaRepository<CheckList, Long>, CheckListCustomRepository {
     Optional<CheckList> findCheckListById(Long id);
 
 }

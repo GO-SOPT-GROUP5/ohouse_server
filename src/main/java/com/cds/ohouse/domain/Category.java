@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+import java.util.Objects;
+
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Getter
@@ -28,4 +30,23 @@ public class Category {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "check_list_id")
     private CheckList checkList;
+
+    public Category(CategoryStatus category, SubCategoryStatus subCategory, int state, CheckList checkList) {
+        this.category = category;
+        this.subCategory = subCategory;
+        this.state = state;
+        setCheckList(checkList);
+    }
+
+    public void updateStatus(int state) {
+        this.state = state;
+    }
+
+    private void setCheckList(CheckList checkList) {
+        if (Objects.nonNull(this.checkList)) {
+            this.checkList.getCategories().remove(this);
+        }
+        this.checkList = checkList;
+        checkList.getCategories().add(this);
+    }
 }
