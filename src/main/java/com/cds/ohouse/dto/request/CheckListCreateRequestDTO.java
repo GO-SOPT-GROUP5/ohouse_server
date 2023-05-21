@@ -1,7 +1,7 @@
 package com.cds.ohouse.dto.request;
 
 import com.cds.ohouse.domain.TradeState;
-import com.cds.ohouse.dto.CheckListDataDTO;
+import com.cds.ohouse.dto.CategoryListDataDTO;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,7 +20,7 @@ public class CheckListCreateRequestDTO {
   private int size;
 
   private int grade;
-  private CheckListDataDTO checkListData;
+  private CategoryListDataDTO checkListData;
 //  private List<CheckListCreateRequestVO> categoryListData;
 
 }
