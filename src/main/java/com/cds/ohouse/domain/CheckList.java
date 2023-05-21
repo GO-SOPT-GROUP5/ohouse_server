@@ -11,7 +11,6 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -45,10 +44,10 @@ public class CheckList {
     @Column(name = "ho")
     private int ho;
 
-    @OneToOne(mappedBy = "checkList", cascade = CascadeType.PERSIST)
+    @OneToOne(mappedBy = "checkList", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Tag tag;
 
-    @OneToMany(mappedBy = "checkList")
+    @OneToMany(mappedBy = "checkList", cascade = CascadeType.REMOVE)
     List<Category> categories =  new ArrayList<>();
 
     @Builder

@@ -1,6 +1,5 @@
 package com.cds.ohouse.service;
 
-import com.cds.ohouse.domain.CheckList;
 import com.cds.ohouse.domain.TradeState;
 import com.cds.ohouse.dto.request.CheckListSortType;
 import com.cds.ohouse.dto.request.CheckListUpdateRequestDTO;
@@ -12,6 +11,8 @@ import java.util.List;
 
 public interface CheckListService {
     CheckListUpdateResponseDTO updateCheckList(CheckListUpdateRequestDTO checkListUpdateRequestDTO);
+
+    void deleteCheckList(Long id);
 
     List<CheckListsGetResponseDTO> getCheckLists(TradeState tradeState, CheckListSortType checkListSortType, Pageable pageable);
 }

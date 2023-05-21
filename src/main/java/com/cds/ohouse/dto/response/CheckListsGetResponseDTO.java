@@ -1,15 +1,8 @@
 package com.cds.ohouse.dto.response;
 
 import com.cds.ohouse.domain.CheckList;
-import com.cds.ohouse.dto.request.CheckListUpdateRequestDTO;
-import com.querydsl.core.annotations.QueryProjection;
-import com.querydsl.core.types.dsl.NumberExpression;
-import com.querydsl.core.types.dsl.NumberPath;
-import com.querydsl.core.types.dsl.StringExpression;
-import com.querydsl.core.types.dsl.StringPath;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
 

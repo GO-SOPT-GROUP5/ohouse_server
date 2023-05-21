@@ -2,7 +2,6 @@ package com.cds.ohouse.domain;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Check;
 
 import javax.persistence.*;
 

@@ -2,7 +2,6 @@ package com.cds.ohouse.service;
 
 import com.cds.ohouse.common.ErrorStatus;
 import com.cds.ohouse.domain.Category;
-import com.cds.ohouse.domain.CheckList;
 import com.cds.ohouse.domain.Tag;
 import com.cds.ohouse.domain.TradeState;
 import com.cds.ohouse.dto.request.CheckListSortType;
@@ -40,6 +39,13 @@ public class CheckListServiceImpl implements CheckListService {
         checkList.getTag().updateTag(tag);
 
         return CheckListUpdateResponseDTO.of(checkListUpdateRequestDTO, CheckListUpdateResponseVO.of(tag));
+    }
+    @Override
+    @Transactional
+    public void deleteCheckList(Long id){
+        val checkList = checkListRepository.findById(id)
+            .orElseThrow(() -> new CheckListException(ErrorStatus.INVALID_CHECKLIST_EXCEPTION));
+        checkListRepository.delete(checkList);
     }
 
     @Override
