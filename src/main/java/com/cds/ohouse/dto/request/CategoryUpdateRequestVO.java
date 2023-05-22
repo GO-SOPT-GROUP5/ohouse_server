@@ -11,5 +11,5 @@ public class CategoryUpdateRequestVO {
     @NotBlank
     private Long id;
     @NotBlank
-    private int status;
+    private int state;
 }

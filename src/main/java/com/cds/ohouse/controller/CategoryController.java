@@ -23,6 +23,7 @@ public class CategoryController {
     @PatchMapping
     public ResponseEntity<ApiResponse> updateCheckList(@RequestBody CategoryUpdateRequestDTO request) {
         categoryService.updateCategory(request);
+        //categoryService.updateCheckListStatus(request);
         return ResponseEntity.ok(ApiResponse.success(SuccessStatus.UPDATE_CATEGORY_SUCCESS));
     }
 }
