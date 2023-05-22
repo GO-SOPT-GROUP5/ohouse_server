@@ -5,14 +5,21 @@ import com.cds.ohouse.domain.*;
 import com.cds.ohouse.dto.CategoryListDataDTO;
 import com.cds.ohouse.dto.CategoryListDataVO;
 import com.cds.ohouse.dto.TagDataDTO;
+import com.cds.ohouse.domain.Category;
+import com.cds.ohouse.domain.Tag;
+import com.cds.ohouse.domain.TradeState;
+import com.cds.ohouse.dto.request.CheckListSortType;
 import com.cds.ohouse.dto.request.CheckListUpdateRequestDTO;
 import com.cds.ohouse.dto.response.CheckListGetResponseDTO;
 import com.cds.ohouse.dto.response.CheckListUpdateResponseDTO;
 import com.cds.ohouse.dto.response.CheckListUpdateResponseVO;
+import com.cds.ohouse.dto.response.CheckListsGetResponseDTO;
 import com.cds.ohouse.exception.CheckListException;
 import com.cds.ohouse.repository.CategoryRepository;
 import com.cds.ohouse.repository.CheckListRepository;
+
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import lombok.val;
@@ -20,6 +27,8 @@ import lombok.val;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -41,6 +50,7 @@ public class CheckListServiceImpl implements CheckListService {
 
         return CheckListUpdateResponseDTO.of(checkListUpdateRequestDTO, CheckListUpdateResponseVO.of(tag));
     }
+  
     @Override
     public CheckListGetResponseDTO getCheckListById(Long id) {
         val checkList =  checkListRepository.findById(id)
@@ -63,8 +73,32 @@ public class CheckListServiceImpl implements CheckListService {
 
         return CheckListGetResponseDTO.of(checkList, TagData, checkListData);
     }
+  
+    @Transactional
+    public void deleteCheckList(Long id){
+        val checkList = checkListRepository.findById(id)
+            .orElseThrow(() -> new CheckListException(ErrorStatus.INVALID_CHECKLIST_EXCEPTION));
+        checkListRepository.delete(checkList);
+    }
 
-    public HashMap<CategoryStatus, ArrayList<CategoryListDataVO>> arrangeCategories(List<Category> categoryList) {
+    @Override
+    @Transactional
+    public List<CheckListsGetResponseDTO> getCheckLists(TradeState tradeState, CheckListSortType checkListSortType, Pageable pageable) {
+        val checkLists = checkListRepository.search(tradeState, checkListSortType, pageable);
+
+        return checkLists.stream().map(checkList -> {
+            Map<Integer, Long> countsByStatus = checkList.getCategories().stream()
+                    .collect(Collectors.groupingBy(Category::getState, Collectors.counting()));
+
+            Long countGood = countsByStatus.getOrDefault(1, 0L);
+            Long countAverage = countsByStatus.getOrDefault(2, 0L);
+            Long countBad = countsByStatus.getOrDefault(3, 0L);
+
+            return CheckListsGetResponseDTO.of(checkList, Math.toIntExact(countGood), Math.toIntExact(countAverage), Math.toIntExact(countBad));
+        }).collect(Collectors.toList());
+    }
+  
+   private HashMap<CategoryStatus, ArrayList<CategoryListDataVO>> arrangeCategories(List<Category> categoryList) {
         HashMap<CategoryStatus, ArrayList<CategoryListDataVO>> map = new HashMap<>();
 
         categoryList.stream().forEach(category -> {
