@@ -16,7 +16,7 @@ import com.cds.ohouse.dto.response.CheckListUpdateResponseVO;
 import com.cds.ohouse.dto.response.CheckListsGetResponseDTO;
 import com.cds.ohouse.exception.CheckListException;
 import com.cds.ohouse.repository.CategoryRepository;
-import com.cds.ohouse.repository.CheckListRepository;
+import com.cds.ohouse.repository.checkList.CheckListRepository;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -66,8 +66,8 @@ public class CheckListServiceImpl implements CheckListService {
 
         val indoorList = arrangedCategoryList.get(CategoryStatus.INDOOR);
         val kitchenList = arrangedCategoryList.get(CategoryStatus.KITCHEN);
-        val livingRoomList = arrangedCategoryList.get(CategoryStatus.LIVINGROOM);
-        val bathroomList = arrangedCategoryList.get(CategoryStatus.BATHROOM);
+        val livingRoomList = arrangedCategoryList.get(CategoryStatus.LIVING_ROOM);
+        val bathroomList = arrangedCategoryList.get(CategoryStatus.BATH_ROOM);
 
         val checkListData = CategoryListDataDTO.of(indoorList, kitchenList, livingRoomList, bathroomList);
 

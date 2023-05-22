@@ -31,6 +31,7 @@ public class CheckListController {
     public ResponseEntity<ApiResponse> getCheckList(@PathVariable Long id) {
         val checkList = checkListService.getCheckListById(id);
         return ResponseEntity.ok(ApiResponse.success(SuccessStatus.GET_CHECKLIST_SUCCESS, checkList));
+    }
 
     @GetMapping("/list")
     public ResponseEntity<ApiResponse> getCheckList(@RequestParam(required = false) TradeState flag, @RequestParam CheckListSortType order, Pageable pageable) {
