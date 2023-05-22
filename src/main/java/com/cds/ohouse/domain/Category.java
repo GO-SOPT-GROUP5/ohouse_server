@@ -12,7 +12,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Getter
 @Entity
 @NoArgsConstructor
-public class Category {
+public class Category extends BaseEntity {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "category_id")
