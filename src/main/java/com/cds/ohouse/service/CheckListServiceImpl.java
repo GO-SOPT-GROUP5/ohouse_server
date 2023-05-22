@@ -90,9 +90,9 @@ public class CheckListServiceImpl implements CheckListService {
             Map<Integer, Long> countsByStatus = checkList.getCategories().stream()
                     .collect(Collectors.groupingBy(Category::getState, Collectors.counting()));
 
-            Long countGood = countsByStatus.getOrDefault(1, 0L);
-            Long countAverage = countsByStatus.getOrDefault(2, 0L);
-            Long countBad = countsByStatus.getOrDefault(3, 0L);
+            val countGood = countsByStatus.getOrDefault(3, 0L);
+            val countAverage = countsByStatus.getOrDefault(2, 0L);
+            val countBad = countsByStatus.getOrDefault(1, 0L);
 
             return CheckListsGetResponseDTO.of(checkList, Math.toIntExact(countGood), Math.toIntExact(countAverage), Math.toIntExact(countBad));
         }).collect(Collectors.toList());

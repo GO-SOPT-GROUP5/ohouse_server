@@ -44,6 +44,15 @@ public class CheckList {
     @Column(name = "ho")
     private int ho;
 
+    @Column(name = "good")
+    private int good;
+
+    @Column(name = "average")
+    private int average;
+
+    @Column(name = "bad")
+    private int bad;
+
     @OneToOne(mappedBy = "checkList", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Tag tag;
 
@@ -51,7 +60,19 @@ public class CheckList {
     List<Category> categories =  new ArrayList<>();
 
     @Builder
-    public CheckList(String title, String image, String description, int grade, String address, int dong, int ho, Tag tag) {
+    public CheckList(
+            String title,
+            String image,
+            String description,
+            int grade,
+            String address,
+            int dong,
+            int ho,
+            int good,
+            int average,
+            int bad,
+            Tag tag
+    ) {
         this.title = title;
         this.image = image;
         this.description = description;
@@ -59,6 +80,9 @@ public class CheckList {
         this.address = address;
         this.dong = dong;
         this.ho = ho;
+        this.good = good;
+        this.average = average;
+        this.bad = bad;
         this.tag = tag;
     }
 
@@ -70,5 +94,11 @@ public class CheckList {
         this.address = checkListUpdateRequestDTO.getAddress();
         this.dong = checkListUpdateRequestDTO.getDong();
         this.ho = checkListUpdateRequestDTO.getHo();
+    }
+
+    public void updateCategoryStatus(int good, int average, int bad) {
+        this.good = good;
+        this.average = average;
+        this.bad = bad;
     }
 }

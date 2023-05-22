@@ -10,5 +10,7 @@ import java.util.List;
 @NoArgsConstructor
 public class CategoryUpdateRequestDTO {
     @NotBlank
+    private Long checkListId;
+    @NotBlank
     private List<CategoryUpdateRequestVO> categoryList;
 }
