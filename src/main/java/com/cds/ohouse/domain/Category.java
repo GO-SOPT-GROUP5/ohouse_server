@@ -1,13 +1,18 @@
 package com.cds.ohouse.domain;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
+
+import java.util.Objects;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Getter
+@Setter
 @Entity
 @NoArgsConstructor
 public class Category {
@@ -28,4 +33,27 @@ public class Category {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "check_list_id")
     private CheckList checkList;
+
+    public Category(CategoryStatus category, SubCategoryStatus subCategory, int state, CheckList checkList) {
+        this.category = category;
+        this.subCategory = subCategory;
+        this.state = state;
+        setCheckList(checkList);
+    }
+
+    public void updateStatus(int state) {
+        this.state = state;
+    }
+
+    private void setCheckList(CheckList checkList) {
+        if (Objects.nonNull(this.checkList)) {
+            this.checkList.getCategories().remove(this);
+        }
+        this.checkList = checkList;
+        checkList.getCategories().add(this);
+    }
+
+    public static Category newInstance(CategoryStatus category, SubCategoryStatus subCategory, int state, CheckList checkList) {
+        return new Category(category, subCategory, state, checkList);
+    }
 }

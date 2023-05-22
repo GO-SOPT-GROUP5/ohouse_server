@@ -42,4 +42,9 @@ public class Tag {
         this.price = tag.getPrice();
         this.size = tag.getSize();
     }
+
+
+    public static Tag newInstance(TradeState state, String price, int size) {
+        return new Tag(state, price, size);
+    }
 }

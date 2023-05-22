@@ -4,8 +4,10 @@ import javax.validation.constraints.NotBlank;
 
 import com.cds.ohouse.domain.TradeState;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
+@NoArgsConstructor
 public class CheckListUpdateRequestDTO {
     @NotBlank
     private Long id;

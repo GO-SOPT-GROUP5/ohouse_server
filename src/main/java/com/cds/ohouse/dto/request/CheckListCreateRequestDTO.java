@@ -18,9 +18,6 @@ public class CheckListCreateRequestDTO {
   private TradeState state;
   private String price;
   private int size;
-
   private int grade;
   private CategoryListDataDTO checkListData;
-//  private List<CheckListCreateRequestVO> categoryListData;
-
 }

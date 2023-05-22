@@ -5,10 +5,9 @@ import com.cds.ohouse.domain.*;
 import com.cds.ohouse.dto.CategoryListDataDTO;
 import com.cds.ohouse.dto.CategoryListDataVO;
 import com.cds.ohouse.dto.TagDataDTO;
+import com.cds.ohouse.dto.request.CheckListCreateRequestDTO;
 import com.cds.ohouse.dto.request.CheckListUpdateRequestDTO;
-import com.cds.ohouse.dto.response.CheckListGetResponseDTO;
-import com.cds.ohouse.dto.response.CheckListUpdateResponseDTO;
-import com.cds.ohouse.dto.response.CheckListUpdateResponseVO;
+import com.cds.ohouse.dto.response.*;
 import com.cds.ohouse.exception.CheckListException;
 import com.cds.ohouse.repository.CategoryRepository;
 import com.cds.ohouse.repository.CheckListRepository;
@@ -83,4 +82,89 @@ public class CheckListServiceImpl implements CheckListService {
 
         return map;
     }
+    @Override
+    @Transactional
+    public CheckListCreateResponseDTO createCheckList(CheckListCreateRequestDTO request){
+        val tag = new Tag(
+            request.getState(),
+            request.getPrice(),
+            request.getSize()
+        );
+
+        val checkList = CheckList.builder()
+            .image(request.getImage())
+            .address(request.getAddress())
+            .title(request.getTitle())
+            .dong(request.getDong())
+            .ho(request.getHo())
+            .description(request.getDescription())
+            .grade(request.getGrade())
+            .tag(tag)
+            .build();
+
+        val categoryList = request.getCheckListData();
+
+        checkList.getTag().setCheckList(checkList);
+
+        checkListRepository.save(checkList);
+
+        val ckList = checkListRepository.findDistinctById(checkList.getId());
+
+
+
+        System.out.println("test"+categoryList.getBathroom());
+
+        val reqCategoryList = categoryList.getBathroom();
+
+        reqCategoryList.stream().forEach(categoryListDataVO -> {
+            System.out.println("test22" + categoryListDataVO.getState());
+            System.out.println("test23" + categoryListDataVO.getSubCategoryStatus());
+            System.out.println("333" + ckList);
+            Category category = new Category(
+                CategoryStatus.BATHROOM,
+                categoryListDataVO.getSubCategoryStatus(),
+                categoryListDataVO.getState(),
+                ckList
+            );
+            categoryRepository.save(category);
+        });
+
+//
+//            for (Category categoryRequest : request.getCategoryListDataDTO()) {
+//                Category category = Category.builder()
+//                    .category(categoryRequest.getCategory())
+//                    .subCategory(categoryRequest.getSubCategory())
+//                    .state(categoryRequest.getState())
+//                    .checkList(checkList)
+//                    .build();
+//                createdCategories.add(category);
+//            }
+//            categoryRepository.saveAll(createdCategories);
+
+//
+//        HashMap<CategoryStatus, ArrayList<CategoryListDataVO>> arrangedCategories = arrangeCategories(createdCategories);
+//
+//        val indoorList = arrangedCategories.get(CategoryStatus.INDOOR);
+//        val kitchenList = arrangedCategories.get(CategoryStatus.KITCHEN);
+//        val livingRoomList = arrangedCategories.get(CategoryStatus.LIVINGROOM);
+//        val bathroomList = arrangedCategories.get(CategoryStatus.BATHROOM);
+//
+//        val checkListData = CategoryListDataDTO.of(indoorList, kitchenList, livingRoomList, bathroomList);
+
+
+        return CheckListCreateResponseDTO.of(
+            checkList.getId(),
+            checkList.getTitle(),
+            checkList.getAddress(),
+            checkList.getDong(),
+            checkList.getHo(),
+            checkList.getImage(),
+            checkList.getDescription(),
+            checkList.getGrade(),
+            CheckListCreateResponseVO.of(tag)
+            //categoryList
+            //TODO: 카테고리 추가
+        );
+    }
+
 }

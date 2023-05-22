@@ -13,7 +13,7 @@ public enum SuccessStatus {
      * 200 OK
      */
     UPDATE_CATEGORY_SUCCESS(HttpStatus.OK, "카테고리 수정이 완료됐습니다."),
-
+    DELETE_CHECKLIST_SUCCESS(HttpStatus.OK, "체크리스트가 삭제되었습니다."),
     /**
      * 201 CREATED
      */
@@ -22,7 +22,6 @@ public enum SuccessStatus {
      *checkList
      **/
     CREATE_CHECKLIST_SUCCESS(HttpStatus.CREATED, "체크리스트가 생성되었습니다."),
-    DELETE_CHECKLIST_SUCCESS(HttpStatus.OK, "체크리스트가 삭제되었습니다."),
     GET_CHECKLIST_SUCCESS(HttpStatus.OK, "체크리스트가 조회되었습니다."),
     ;
 

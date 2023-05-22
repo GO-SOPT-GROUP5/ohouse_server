@@ -51,7 +51,7 @@ public class CheckList {
     List<Category> categories =  new ArrayList<>();
 
     @Builder
-    public CheckList(String title, String image, String description, int grade, String address, int dong, int ho, Tag tag) {
+    public CheckList(String title, String image, String description, int grade, String address, int dong, int ho, Tag tag, List<Category> categories) {
         this.title = title;
         this.image = image;
         this.description = description;
@@ -60,6 +60,7 @@ public class CheckList {
         this.dong = dong;
         this.ho = ho;
         this.tag = tag;
+        this.categories = categories;
     }
 
     public void updateCategory(CheckListUpdateRequestDTO checkListUpdateRequestDTO) {
