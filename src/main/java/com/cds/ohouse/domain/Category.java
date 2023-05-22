@@ -41,19 +41,11 @@ public class Category {
         setCheckList(checkList);
     }
 
-    public void updateStatus(int state) {
-        this.state = state;
-    }
-
     private void setCheckList(CheckList checkList) {
         if (Objects.nonNull(this.checkList)) {
             this.checkList.getCategories().remove(this);
         }
         this.checkList = checkList;
         checkList.getCategories().add(this);
-    }
-
-    public static Category newInstance(CategoryStatus category, SubCategoryStatus subCategory, int state, CheckList checkList) {
-        return new Category(category, subCategory, state, checkList);
     }
 }

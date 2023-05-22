@@ -10,14 +10,30 @@ import lombok.Getter;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class CheckListCreateRequestDTO {
   private String title;
+
   private String address;
+
   private int dong;
+
   private int ho;
+
   private String image;
+
   private String description;
+
   private TradeState state;
+
   private String price;
+
   private int size;
+
   private int grade;
+
+  private int good;
+
+  private int average;
+
+  private int bad;
+
   private CategoryListDataDTO checkListData;
 }
