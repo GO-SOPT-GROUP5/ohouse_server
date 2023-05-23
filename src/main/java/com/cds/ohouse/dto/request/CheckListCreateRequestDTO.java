@@ -26,20 +26,6 @@ public class CheckListCreateRequestDTO {
   private TradeState state;
 
   private String price;
-  
-  private String address;
-  
-  private int dong;
-  
-  private int ho;
-  
-  private String image;
-  
-  private String description;
-  
-  private TradeState state;
-  
-  private String price;
 
   private int size;
 

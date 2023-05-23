@@ -73,7 +73,6 @@ public class CheckList extends BaseEntity {
             int bad,
             Tag tag,
             List<Category> categories
-            Tag tag
     ) {
         this.title = title;
         this.image = image;

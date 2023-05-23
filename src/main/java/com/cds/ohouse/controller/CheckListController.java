@@ -44,7 +44,7 @@ public class CheckListController {
     }
   
     @GetMapping("/list")
-    public ResponseEntity<ApiResponse> getCheckList(@RequestParam(required = false) TradeState flag, @RequestParam CheckListSortType order, Pageable pageable) {
+    public ResponseEntity<ApiResponse> getCheckLists(@RequestParam(required = false) TradeState flag, @RequestParam CheckListSortType order, Pageable pageable) {
         val response = checkListService.getCheckLists(flag, order, pageable);
         return ResponseEntity.ok(ApiResponse.success(SuccessStatus.UPDATE_CATEGORY_SUCCESS, response));
     }
