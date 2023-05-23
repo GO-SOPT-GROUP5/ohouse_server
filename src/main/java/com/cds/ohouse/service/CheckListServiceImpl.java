@@ -144,8 +144,8 @@ public class CheckListServiceImpl implements CheckListService {
         );
     }
   
-    public List<CheckListsGetResponseDTO> getCheckLists(TradeState tradeState, CheckListSortType checkListSortType, Pageable pageable) {
-        val checkLists = checkListRepository.search(tradeState, checkListSortType, pageable);
+    public List<CheckListsGetResponseDTO> getCheckLists(TradeState tradeState, CheckListSortType checkListSortType, int page, int size) {
+        val checkLists = checkListRepository.search(tradeState, checkListSortType, page, size);
 
         return checkLists.stream().map(checkList -> {
             Map<Integer, Long> countsByStatus = checkList.getCategories().stream()

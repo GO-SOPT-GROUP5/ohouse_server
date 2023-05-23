@@ -22,5 +22,5 @@ public interface CheckListService {
 
     void deleteCheckList(Long id);
 
-    List<CheckListsGetResponseDTO> getCheckLists(TradeState tradeState, CheckListSortType checkListSortType, Pageable pageable);
+    List<CheckListsGetResponseDTO> getCheckLists(TradeState tradeState, CheckListSortType checkListSortType, int page, int size);
 }

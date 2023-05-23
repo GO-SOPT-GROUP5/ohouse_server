@@ -23,15 +23,15 @@ public class CheckListRepositoryImpl implements CheckListCustomRepository {
     private final JPAQueryFactory queryFactory;
 
     @Override
-    public List<CheckList> search(TradeState tradeState, CheckListSortType checkListSortType, Pageable pageable) {
+    public List<CheckList> search(TradeState tradeState, CheckListSortType checkListSortType, int page, int size) {
         return queryFactory
             .selectFrom(checkList)
             .where(
                 whereCondition(tradeState)
             )
             .orderBy(sortCondition(checkListSortType))
-            .offset(pageable.getOffset())
-            .limit(pageable.getPageSize())
+            .offset(page)
+            .limit(size)
             .fetch();
     }
 
