@@ -15,7 +15,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Setter
 @Entity
 @NoArgsConstructor
-public class Category {
+public class Category extends BaseEntity {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "category_id")

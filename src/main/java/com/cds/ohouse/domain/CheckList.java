@@ -17,7 +17,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Getter
 @Entity
 @NoArgsConstructor
-public class CheckList {
+public class CheckList extends BaseEntity {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "check_list_id")

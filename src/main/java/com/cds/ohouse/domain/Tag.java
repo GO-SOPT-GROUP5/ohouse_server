@@ -13,7 +13,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Setter
 @Entity
 @NoArgsConstructor
-public class Tag {
+public class Tag extends BaseEntity {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "tag_id")

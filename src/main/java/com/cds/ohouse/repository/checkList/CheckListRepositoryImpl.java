@@ -40,6 +40,18 @@ public class CheckListRepositoryImpl implements CheckListCustomRepository {
     }
 
     private OrderSpecifier sortCondition(CheckListSortType checkListSortType) {
-        return checkListSortType.equals(CheckListSortType.GRADE) ? checkList.grade.desc(): checkList.good.desc();
+        OrderSpecifier condition = null;
+        switch (checkListSortType) {
+            case LIKE:
+                condition = checkList.good.desc();
+                break;
+            case GRADE:
+                condition = checkList.grade.desc();
+                break;
+            case NEWEST:
+                condition = checkList.createdAt.desc();
+                break;
+        }
+        return condition;
     }
 }
