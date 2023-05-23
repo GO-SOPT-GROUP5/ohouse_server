@@ -1,5 +1,6 @@
 package com.cds.ohouse.domain;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -31,6 +32,7 @@ public class Tag extends BaseEntity {
     @JoinColumn(name = "check_list_id")
     private CheckList checkList;
 
+    @Builder
     public Tag(TradeState state, String price, int size) {
         this.state = state;
         this.price = price;

@@ -1,6 +1,8 @@
 package com.cds.ohouse.repository;
 
+
 import com.cds.ohouse.domain.Category;
+import com.cds.ohouse.domain.CheckList;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

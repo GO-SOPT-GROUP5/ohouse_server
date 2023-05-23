@@ -71,6 +71,8 @@ public class CheckList extends BaseEntity {
             int good,
             int average,
             int bad,
+            Tag tag,
+            List<Category> categories
             Tag tag
     ) {
         this.title = title;
@@ -84,6 +86,7 @@ public class CheckList extends BaseEntity {
         this.average = average;
         this.bad = bad;
         this.tag = tag;
+        this.categories = categories;
     }
 
     public void updateCategory(CheckListUpdateRequestDTO checkListUpdateRequestDTO) {
