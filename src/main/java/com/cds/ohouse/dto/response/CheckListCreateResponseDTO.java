@@ -1,12 +1,6 @@
 package com.cds.ohouse.dto.response;
 
-import com.cds.ohouse.domain.Category;
-import com.cds.ohouse.domain.CheckList;
-import com.cds.ohouse.domain.TradeState;
 import com.cds.ohouse.dto.CategoryListDataDTO;
-import com.cds.ohouse.dto.TagDataDTO;
-import com.cds.ohouse.dto.response.CheckListCreateResponseVO;
-import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

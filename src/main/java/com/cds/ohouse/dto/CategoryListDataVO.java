@@ -3,9 +3,11 @@ package com.cds.ohouse.dto;
 import com.cds.ohouse.domain.SubCategoryStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 
 @Getter
+@NoArgsConstructor
 @AllArgsConstructor
 public class CategoryListDataVO {
   private Long id;

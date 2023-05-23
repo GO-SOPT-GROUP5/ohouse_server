@@ -2,10 +2,12 @@ package com.cds.ohouse.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 
 @Getter
+@NoArgsConstructor
 @AllArgsConstructor
 public class CategoryListDataDTO {
   private ArrayList<CategoryListDataVO> indoor;

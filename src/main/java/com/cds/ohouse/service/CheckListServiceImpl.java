@@ -27,6 +27,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import lombok.val;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -87,6 +90,10 @@ public class CheckListServiceImpl implements CheckListService {
     @Override
     @Transactional
     public CheckListCreateResponseDTO createCheckList(CheckListCreateRequestDTO checkListCreateRequestDTO){
+        val createdTime = LocalDateTime.now(ZoneId.of("Asia/Seoul"));
+        val formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm 등록매물");
+        val formattedDateTime = createdTime.format(formatter);
+
         List<Category> initalCategoryList = new ArrayList<>();
 
         val tag = Tag.builder()
@@ -98,7 +105,7 @@ public class CheckListServiceImpl implements CheckListService {
         val checkList = CheckList.builder()
                 .image(checkListCreateRequestDTO.getImage())
                 .address(checkListCreateRequestDTO.getAddress())
-                .title(checkListCreateRequestDTO.getTitle())
+                .title(formattedDateTime)
                 .dong(checkListCreateRequestDTO.getDong())
                 .ho(checkListCreateRequestDTO.getHo())
                 .description(checkListCreateRequestDTO.getDescription())
