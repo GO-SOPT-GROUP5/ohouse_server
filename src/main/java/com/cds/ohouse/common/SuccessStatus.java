@@ -14,10 +14,12 @@ public enum SuccessStatus {
      */
     UPDATE_CATEGORY_SUCCESS(HttpStatus.OK, "카테고리 수정이 완료됐습니다."),
     DELETE_CHECKLIST_SUCCESS(HttpStatus.OK, "체크리스트가 삭제되었습니다."),
+
     /**
      * 201 CREATED
      */
     CREATE_CATEGORY_SUCCESS(HttpStatus.CREATED, "카테고리 생성이 완료됐습니다."),
+  
     /**
      *checkList
      **/

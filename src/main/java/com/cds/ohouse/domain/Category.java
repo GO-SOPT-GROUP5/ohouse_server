@@ -41,6 +41,10 @@ public class Category {
         setCheckList(checkList);
     }
 
+    public void updateStatus(int state) {
+        this.state = state;
+    }
+
     private void setCheckList(CheckList checkList) {
         if (Objects.nonNull(this.checkList)) {
             this.checkList.getCategories().remove(this);
